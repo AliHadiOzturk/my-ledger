@@ -1,0 +1,35 @@
+{
+    "tab": {
+        "ledger": "Defter",
+        "setting": "Ayarlar"
+    },
+    "pages": {
+        "workperiods": "Çalışma Dönemleri"
+    },
+    "setting": {
+        "theme": "Tema",
+        "language": "Dil"
+    },
+    "theme": {
+        "dark": "Koyu",
+        "ligth": "Açık"
+    },
+    "action": {
+        "save": "Kaydet",
+        "edit": "Güncelle",
+        "remove": "Sil"
+    },
+    "model": {
+        "transaction": {
+            "description": "Açıklama",
+            "price": "Fiyat",
+            "type": "Tip",
+            "startTime": "Başlangıç Tarihi",
+            "endTime": "Bitiş Tarihi"
+        },
+        "transactiontype": {
+            "income": "Gelir",
+            "expense": "Gider"
+        }
+    }
+}

@@ -1,0 +1,35 @@
+{
+    "tab": {
+        "ledger": "Ledger",
+        "setting": "Settings"
+    },
+    "pages": {
+        "workperiods": "Work Periods"
+    },
+    "setting": {
+        "theme": "Theme",
+        "language": "Language"
+    },
+    "theme": {
+        "dark": "Dark",
+        "ligth": "Ligth"
+    },
+    "action": {
+        "save": "Save",
+        "edit": "Edit",
+        "remove": "Remove"
+    },
+    "model": {
+        "transaction": {
+            "description": "Description",
+            "price": "Price",
+            "type": "Type",
+            "startTime": "Start Time",
+            "endTime": "End Time"
+        },
+        "transactiontype": {
+            "income": "Income",
+            "expense": "Expense"
+        }
+    }
+}
