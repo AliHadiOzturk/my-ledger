@@ -9,7 +9,7 @@ import { theme } from './styles/index';
 import { LocalizationProvider, translate } from './localization';
 import { Storage, StoreKeys } from './utils/storage';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+import SplashScreen from 'react-native-splash-screen'
 
 
 
@@ -29,7 +29,7 @@ const LedgerStackScreen = () => {
           presentation: 'modal',
           headerShown: true,
           headerStyle: { backgroundColor: config.theme.colors.background },
-          title:translate("pages.workperiods"),
+          title: translate("pages.workperiods"),
         }}
         name="WorkPeriods"
         component={WorkPeriods}>
@@ -60,6 +60,10 @@ const App = () => {
 
 const Main = () => {
   const config = useContext(ConfigContext);
+
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
   return (
     <LocalizationProvider>
       <PaperProvider theme={config?.theme}>

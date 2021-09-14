@@ -9,7 +9,7 @@ export const WorkPeriods = (props) => {
     const [workPeriods, setWorkPeriods] = useState();
     useEffect(() => {
         Storage.get(StoreKeys.workperiods).then(periods => {
-            setWorkPeriods(periods);
+            setWorkPeriods(periods.sort((a, b) => b.endTime > a.endTime));
         });
     }, [])
     // useLayoutEffect(() => {
@@ -26,9 +26,10 @@ export const WorkPeriods = (props) => {
                 workPeriods && workPeriods.map((workPeriod, idx) => {
                     return (
                         <List.Accordion
+                            key={idx}
                             style={{ backgroundColor: colors.disabled }}
                             title={
-                                <WorkPeriodComponent key={idx} workPeriod={workPeriod}></WorkPeriodComponent>
+                                <WorkPeriodComponent workPeriod={workPeriod}></WorkPeriodComponent>
                             }>
                             <Transactions workPeriod={workPeriod}></Transactions>
                         </List.Accordion>

@@ -19,12 +19,37 @@ export default Ledger = ({ navigation }) => {
         Storage.get(StoreKeys.workperiods).then(periods => {
             let idx = periods.findIndex(x => x.id === workPeriod.id);
             if (idx !== -1) {
-                const wp = { ...workPeriod, transactions: [...workPeriod.transactions, transaction] };
-                periods[idx] = wp;
+                let period = periods[idx];
+                console.log(period.transactions);
+                const transactionIdx = period.transactions.findIndex(x => x.id === transaction.id);
+                if (transactionIdx !== -1) {
+                    periods[idx].transactions[transactionIdx] = transaction;
+                }
+                else {
+                    period = { ...workPeriod, transactions: [...workPeriod.transactions, transaction] };
+                    periods[idx] = period;
+
+                }
                 Storage.set(StoreKeys.workperiods, periods);
-                setWorkPeriod(wp);
-                console.log(workPeriod);
+                setWorkPeriod(period);
+
                 setTransaction(new Transaction());
+            }
+        })
+    }
+
+    const editTransaction = (transaction) => {
+        console.log(transaction);
+        setTransaction(transaction);
+    }
+
+    const removeTransaction = (transaction) => {
+        Storage.get(StoreKeys.workperiods).then(periods => {
+            const idx = periods.findIndex(x => x.id === workPeriod.id);
+            if (idx !== -1) {
+                periods[idx].transactions = periods[idx].transactions.filter(x => x.id !== transaction.id);
+                Storage.set(StoreKeys.workperiods, periods);
+                setWorkPeriod(periods[idx]);
             }
         })
     }
@@ -119,7 +144,11 @@ export default Ledger = ({ navigation }) => {
                 </Button>
 
             </View>
-            <Transactions workPeriod={workPeriod} rigth></Transactions>
+            <Transactions
+                workPeriod={workPeriod}
+                rigth
+                onEdit={editTransaction}
+                onDelete={removeTransaction}></Transactions>
         </View >
     )
 }
